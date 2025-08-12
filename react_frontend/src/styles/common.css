@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@500;700&display=swap");
+
+/* Design tokens as CSS variables (from design_system_T0002-1690-5oRpKHjv0EgJNClsdUQnn0.json) */
+:root {
+  /* Colors */
+  --color-adafb3: #adafb3;
+  --color-1d1d1f: #1d1d1f;
+  --color-ffffff: #ffffff;
+  --color-262629: #262629;
+  --color-ebebeb: #ebebeb;
+  --color-000000: #000000;
+  --color-f5f5f5: #f5f5f5;
+  --color-0047ff: #0047ff;
+  --color-e5e5e5: #e5e5e5;
+  --color-141414: #141414;
+  --color-1f1f1f: #1f1f1f;
+  --color-001754: #001754;
+  --color-e6e6e6: #e6e6e6;
+  --color-d8e3ff: #d8e3ff;
+  --color-ff00f5: #ff00f5;
+  --color-171717: #171717;
+  --color-176af6: #176af6;
+  --color-7b61ff: #7b61ff;
+  --color-2c2c2e: #2c2c2e;
+  --color-e5e5ea: #e5e5ea;
+  --color-cccccc: #cccccc;
+  --color-ff0000: #ff0000;
+  --color-e4e4e4: #e4e4e4;
+  --color-7939ff: #7939ff;
+
+  /* Typography families */
+  --font-family-lexend: "Lexend", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  /* Typography sizes/weights (only those used in this screen) */
+  /* Month/Year (typo_17 and typo_20) */
+  --typo-month-size: 24px;
+  --typo-month-weight: 700;
+  --typo-month-line-height: 24px;
+
+  /* Day of week labels (typo_18 dark / typo_21 light) */
+  --typo-dow-size: 18px;
+  --typo-dow-weight: 500;
+  --typo-dow-line-height: 18px;
+
+  /* Day numbers (typo_19 dark / typo_21 light / typo_22 disabled-light) */
+  --typo-day-size: 18px;
+  --typo-day-weight: 500;
+  --typo-day-line-height: 18px;
+
+  /* Spacing tokens used */
+  --sp-4: 4px;
+  --sp-6: 6px;
+  --sp-8: 8px;
+  --sp-12: 12px;
+  --sp-16: 16px;
+  --sp-24: 24px;
+
+  /* Radii */
+  --radius-4: 4px;
+  --radius-6: 6px;
+  --radius-8: 8px;
+  --radius-16: 16px;
+  --radius-24: 24px;
+  --radius-80: 80px;
+
+  /* Shadows (from styles.shadow_0 and shadow_1) */
+  --shadow-0: 0 1px 2px 0 #000e33; /* shadow_0 */
+  --shadow-1: 0 1px 1px 0 #000e33; /* shadow_1 */
+}
+
+/* Utilities */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.shadow-0 {
+  box-shadow: var(--shadow-0);
+}
+
+.shadow-1 {
+  box-shadow: var(--shadow-1);
+}
+
+/* Token-driven text styles (helpers) */
+.text-month {
+  font-family: var(--font-family-lexend);
+  font-size: var(--typo-month-size);
+  font-weight: var(--typo-month-weight);
+  line-height: var(--typo-month-line-height);
+}
+
+.text-dow,
+.text-day {
+  font-family: var(--font-family-lexend);
+  font-size: var(--typo-day-size);
+  font-weight: var(--typo-day-weight);
+  line-height: var(--typo-day-line-height);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(0,0,0,0) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+}

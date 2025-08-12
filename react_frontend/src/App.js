@@ -1,47 +1,53 @@
-import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import "./styles/common.css";
 
-// PUBLIC_INTERFACE
+import Header from "./components/Header";
+import RegularScreen from "./screens/Regular";
+import DoubleViewScreen from "./screens/DoubleView";
+import DateRangeSelectedScreen from "./screens/DateRangeSelected";
+
+/**
+ * PUBLIC_INTERFACE
+ * App
+ * Main application shell. Provides a minimal header with navigation to switch between
+ * Figma-derived demo screens: Regular, Double-view, and Date range selected.
+ *
+ * Returns:
+ *  The full application layout with header and the currently selected screen content.
+ */
 function App() {
-  const [theme, setTheme] = useState('light');
+  const [screen, setScreen] = useState("regular");
 
-  // Effect to apply theme to document element
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-  }, [theme]);
-
-  // PUBLIC_INTERFACE
-  const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+  /**
+   * PUBLIC_INTERFACE
+   * handleNavigate
+   * Changes the current screen.
+   * @param {string} next - one of "regular" | "double" | "range"
+   */
+  const handleNavigate = (next) => {
+    setScreen(next);
   };
 
+  let content = null;
+  switch (screen) {
+    case "double":
+      content = <DoubleViewScreen />;
+      break;
+    case "range":
+      content = <DateRangeSelectedScreen />;
+      break;
+    case "regular":
+    default:
+      content = <RegularScreen />;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <button 
-          className="theme-toggle" 
-          onClick={toggleTheme}
-          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-        >
-          {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
-        </button>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          Current theme: <strong>{theme}</strong>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App app-root">
+      <Header currentScreen={screen} onNavigate={handleNavigate} />
+      <div className="app-content" role="region" aria-label="Screen content">
+        {content}
+      </div>
     </div>
   );
 }

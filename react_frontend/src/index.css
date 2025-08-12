@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Make the root take the full height for proper centering */
+html, body, #root {
+  height: 100%;
+}

@@ -1,0 +1,246 @@
+@import url("./common.css");
+
+/* Screen container reflecting FRAME style_0 */
+.screen-double-view {
+  width: 1200px;
+  height: 800px;
+  background: var(--color-adafb3);
+  border-radius: var(--radius-24);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-24);
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Double-view card (FRAME style_79) 853x444 */
+.double-view {
+  width: 853px;
+  height: 444px;
+  background: var(--color-f5f5f5);
+  border-radius: var(--radius-16);
+  box-shadow: var(--shadow-0);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--sp-24);
+}
+
+/* Individual calendar area (426x444 each area with internal 24px padding around a 378x396 inner frame) */
+.cal-card {
+  width: 426px;
+  height: 444px;
+  padding: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* Vertical divider (RECTANGLE style_23) 1x444, but inside card padding = 396 high */
+.divider {
+  width: 1px;
+  height: 396px;
+  background: var(--color-e6e6e6);
+  align-self: center;
+}
+
+/* Inner calendar frame ("Components" frame: 378x396) */
+.calendar {
+  width: 378px;
+  height: 396px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-12);
+}
+
+/* Header (44px tall) with nav and month/year centered */
+.cal-header {
+  height: 44px;
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  justify-items: center;
+}
+
+/* Circle nav buttons (style_80 light) */
+.nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-80);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  cursor: pointer;
+  background: var(--color-ffffff);
+  box-shadow: var(--shadow-1);
+}
+.nav-btn svg path { fill: var(--color-000000); }
+
+/* Empty spacer to keep header grid balance when one nav is hidden */
+.nav-spacer {
+  width: 44px;
+  height: 44px;
+}
+
+/* Month + Year cluster (centered) */
+.month-year {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-8);
+  height: 44px;
+}
+
+/* Month/Year items (style_81 light container) */
+.month, .year {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-8);
+  height: 44px;
+  padding: 0 var(--sp-8);
+  border-radius: var(--radius-6);
+  background: var(--color-ffffff);
+  box-shadow: var(--shadow-1);
+}
+
+.month .label, .year .label {
+  font-family: var(--font-family-lexend);
+  font-size: var(--typo-month-size);
+  font-weight: var(--typo-month-weight);
+  line-height: var(--typo-month-line-height);
+  color: var(--color-141414); /* typo_20 color */
+}
+
+.dropdown-icon {
+  width: 8px;
+  height: 8px;
+}
+.dropdown-icon path {
+  fill: var(--color-0047ff);
+}
+
+/* Day-of-week row (week starts on Monday) */
+.dow-row {
+  height: 44px;
+  display: grid;
+  grid-template-columns: repeat(7, 54px);
+  grid-auto-rows: 44px;
+  align-items: center;
+  justify-items: center;
+}
+.dow-cell {
+  width: 54px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-4);
+}
+.dow-cell .text {
+  font-family: var(--font-family-lexend);
+  font-size: var(--typo-dow-size);
+  font-weight: var(--typo-dow-weight);
+  line-height: var(--typo-dow-line-height);
+  color: var(--color-1f1f1f); /* typo_21 */
+}
+
+/* Weeks area: grid of 44px tall rows. Left calendar has 5 rows (236px), right has 6 rows (284px) */
+.weeks {
+  display: grid;
+  grid-auto-rows: 44px;
+  row-gap: var(--sp-4);
+}
+
+.week-row {
+  display: grid;
+  grid-template-columns: repeat(7, 54px);
+  grid-auto-rows: 44px;
+}
+
+/* Day cells */
+.day {
+  width: 54px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-6);
+  box-sizing: border-box;
+}
+
+/* Regular day tiles (style_82) */
+.day.regular {
+  background: var(--color-ffffff);
+  border: 0.5px solid var(--color-e5e5e5);
+  border-radius: var(--radius-6);
+  box-shadow: var(--shadow-1);
+}
+
+/* Disabled day tiles (previous/next month days) */
+.day.disabled .num {
+  color: var(--color-001754); /* typo_22 */
+}
+
+/* Today selected (style_14) */
+.day.today {
+  background: var(--color-0047ff);
+  border: 2px solid var(--color-ffffff);
+  border-radius: var(--radius-6);
+}
+.day.today .num {
+  color: var(--color-ffffff);
+}
+
+/* Hover (style_83) */
+.day.hover {
+  background: var(--color-d8e3ff);
+  border: 1px solid var(--color-0047ff);
+  border-radius: var(--radius-6);
+  box-shadow: var(--shadow-1);
+}
+.day.hover .num {
+  color: var(--color-0047ff); /* typo_23 color */
+}
+
+/* Numeric text */
+.num {
+  font-family: var(--font-family-lexend);
+  font-size: var(--typo-day-size);
+  font-weight: var(--typo-day-weight);
+  line-height: var(--typo-day-line-height);
+  color: var(--color-1f1f1f); /* typo_21 */
+}
+
+/* Hand overlay (style_25 circle + inner icon). Size 72x72 */
+.hand {
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  border: 0;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--color-ff00f5);
+  opacity: 0.05;
+  display: grid;
+  place-items: center;
+  cursor: default;
+}
+
+/* Position the hand roughly over the hovered date on the right calendar */
+.hand {
+  /* center of the screen container; adjust to sit over the right calendar's 4th week */
+  top: calc(50% + 6px);
+  left: calc(50% + 120px);
+  transform: translate(-50%, -50%);
+}
+
+/* Inner hand icon as a simple emoji placeholder for the vector */
+.hand .hand-icon {
+  font-size: 24px;
+  line-height: 24px;
+  color: var(--color-ffffff);
+  opacity: 1; /* inner icon is opaque white */
+  pointer-events: none;
+}

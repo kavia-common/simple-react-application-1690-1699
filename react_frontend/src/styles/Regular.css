@@ -1,0 +1,253 @@
+ /* Screen container reflecting FRAME style_0 */
+.screen-regular {
+  width: 1200px;
+  height: 800px;
+  background: var(--color-adafb3);
+  border-radius: var(--radius-24);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-24);
+  padding: var(--sp-24);
+  margin: 0 auto;
+}
+
+/* Mode cards (Dark/Light) reflect style_75 and style_79 */
+.mode-card {
+  width: 426px;
+  height: 396px;
+  border-radius: var(--radius-16);
+  padding: var(--sp-24);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.mode-card.dark {
+  background: var(--color-1d1d1f);
+  box-shadow: var(--shadow-0);
+}
+
+.mode-card.light {
+  background: var(--color-f5f5f5);
+  box-shadow: var(--shadow-0);
+}
+
+/* Inner calendar area ("Components" frame: 378x348) */
+.calendar {
+  width: 378px;
+  height: 348px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-12);
+}
+
+/* Header (44px tall) with nav and month/year centered */
+.cal-header {
+  height: 44px;
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  justify-items: center;
+}
+
+/* Circle nav buttons: style_76 (dark) and style_80 (light) */
+.nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-80);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  cursor: pointer;
+}
+
+.nav-btn.dark {
+  background: var(--color-262629);
+  box-shadow: var(--shadow-1);
+}
+
+.nav-btn.light {
+  background: var(--color-ffffff);
+  box-shadow: var(--shadow-1);
+}
+
+.nav-btn.dark svg path {
+  fill: var(--color-ebebeb);
+}
+
+.nav-btn.light svg path {
+  fill: var(--color-000000);
+}
+
+/* Month + Year cluster (185x44) centered */
+.month-year {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-8);
+  height: 44px;
+}
+
+/* Month/Year items reflect style_77 (dark) and style_81 (light) containers */
+.month, .year {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-8);
+  height: 44px;
+  padding: 0 var(--sp-8);
+  border-radius: var(--radius-6);
+}
+
+.mode-card.dark .month,
+.mode-card.dark .year {
+  background: var(--color-262629);
+  box-shadow: var(--shadow-1);
+}
+
+.mode-card.light .month,
+.mode-card.light .year {
+  background: var(--color-ffffff);
+  box-shadow: var(--shadow-1);
+}
+
+.month .label,
+.year .label {
+  /* typo_17 (dark) / typo_20 (light) sizes from tokens, color by theme below */
+  font-family: var(--font-family-lexend);
+  font-size: var(--typo-month-size);
+  font-weight: var(--typo-month-weight);
+  line-height: var(--typo-month-line-height);
+}
+
+.mode-card.dark .month .label,
+.mode-card.dark .year .label {
+  color: var(--color-f5f5f5); /* typo_17 color */
+}
+
+.mode-card.light .month .label,
+.mode-card.light .year .label {
+  color: var(--color-141414); /* typo_20 color */
+}
+
+.dropdown-icon {
+  width: 8px;
+  height: 8px;
+}
+
+.dropdown-icon path {
+  fill: var(--color-0047ff);
+}
+
+/* Day-of-week row */
+.dow-row {
+  height: 44px;
+  display: grid;
+  grid-template-columns: repeat(7, 54px);
+  grid-auto-rows: 44px;
+  align-items: center;
+  justify-items: center;
+}
+
+.dow-cell {
+  width: 54px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-4);
+}
+
+.dow-cell .text {
+  font-family: var(--font-family-lexend);
+  font-size: var(--typo-dow-size);
+  font-weight: var(--typo-dow-weight);
+  line-height: var(--typo-dow-line-height);
+}
+
+.mode-card.dark .dow-cell .text {
+  color: var(--color-ffffff); /* typo_18 color */
+}
+
+.mode-card.light .dow-cell .text {
+  color: var(--color-1f1f1f); /* typo_21 color */
+}
+
+/* Weeks area: 5 rows -> 5 * 44 = 220; container in Figma is 236 -> gap of ~4 between rows */
+.weeks {
+  display: grid;
+  grid-auto-rows: 44px;
+  row-gap: var(--sp-4);
+}
+
+.week-row {
+  display: grid;
+  grid-template-columns: repeat(7, 54px);
+  grid-auto-rows: 44px;
+}
+
+/* Day cells */
+.day {
+  width: 54px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-4);
+  box-sizing: border-box;
+}
+
+/* Regular day tiles: style_78 (dark) / style_82 (light) */
+.mode-card.dark .day.regular {
+  background: var(--color-262629);
+  border: 0.5px solid var(--color-e5e5e5);
+  border-radius: var(--radius-6);
+  box-shadow: var(--shadow-1);
+}
+
+.mode-card.light .day.regular {
+  background: var(--color-ffffff);
+  border: 0.5px solid var(--color-e5e5e5);
+  border-radius: var(--radius-6);
+  box-shadow: var(--shadow-1);
+}
+
+/* Day numbers in regular cells */
+.mode-card.dark .day.regular .num {
+  color: var(--color-ebebeb); /* typo_19 color */
+}
+
+.mode-card.light .day.regular .num {
+  color: var(--color-1f1f1f); /* typo_21 color */
+}
+
+/* Disabled day tiles (no background per components; only text color differs) */
+.mode-card.dark .day.disabled .num {
+  /* style_12 opacity ~0.1 with white fill over dark tile */
+  color: rgba(255, 255, 255, 0.10);
+}
+
+.mode-card.light .day.disabled .num {
+  /* typo_22 color */
+  color: var(--color-001754);
+}
+
+/* Today selected (style_14) */
+.day.today {
+  background: var(--color-0047ff);
+  border: 2px solid var(--color-ffffff);
+  border-radius: var(--radius-6);
+}
+
+.day.today .num {
+  color: var(--color-ffffff); /* style_2 text fill equivalent */
+}
+
+/* Numeric text base */
+.num {
+  font-family: var(--font-family-lexend);
+  font-size: var(--typo-day-size);
+  font-weight: var(--typo-day-weight);
+  line-height: var(--typo-day-line-height);
+}
